@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Fila 1: Barra de pestañas -->
+        <LinearLayout
+            android:id="@+id/tabStrip"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#DFE3E8"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp">
+
+            <!-- 3 puntos decorativos estilo ventana -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="10dp">
+
+                <View
+                    android:id="@+id/dot1"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="6dp" />
+
+                <View
+                    android:id="@+id/dot2"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="6dp" />
+
+                <View
+                    android:id="@+id/dot3"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tabsRecycler"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:overScrollMode="never" />
+
+            <TextView
+                android:id="@+id/btnNewTab"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="+"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtPcMode"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center_vertical"
+                android:paddingEnd="4dp"
+                android:text="Modo PC"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Fila 2: Barra de navegación y Omnibox -->
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#FFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="10dp">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="←"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/btnForward"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="→"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/btnReload"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="↻"
+                android:textSize="19sp" />
+
+            <!-- Barra de búsqueda / dirección ovalada -->
+            <LinearLayout
+                android:id="@+id/omniboxContainer"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:id="@+id/iconSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="🔍"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/editUrl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:focusable="true"
+                    android:hint="Buscar en Google.com.ar o escribir URL"
+                    android:imeOptions="actionGo"
+                    android:inputType="textUri"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/btnBookmark"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_focus_button"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="☆"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <!-- Bloqueador nativo -->
+            <TextView
+                android:id="@+id/btnAdBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:minWidth="46dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="🛡 0"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Marcadores guardados -->
+            <TextView
+                android:id="@+id/btnBookmarksList"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="★"
+                android:textSize="16sp" />
+
+            <!-- Modo oscuro / claro -->
+            <TextView
+                android:id="@+id/btnTheme"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="🌙"
+                android:textSize="15sp" />
+
+            <!-- Pantalla completa -->
+            <TextView
+                android:id="@+id/btnFullscreen"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="⛶"
+                android:textSize="17sp" />
+
+            <!-- Botón Cerrar a la derecha -->
+            <LinearLayout
+                android:id="@+id/btnClose"
+                android:layout_width="46dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_focus_button"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtCloseIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="✕"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtCloseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="Cerrar"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/toolbarDivider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E2E8F0" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:max="100"
+            android:visibility="gone" />
+
+        <!-- Contenedor WebView -->
+        <FrameLayout
+            android:id="@+id/webContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Capa para videos y vista en pantalla completa -->
+    <FrameLayout
+        android:id="@+id/fullscreenContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+</FrameLayout>
